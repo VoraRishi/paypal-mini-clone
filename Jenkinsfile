@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
@@ -9,7 +10,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
-
             }
         }
         stage('Run Tests') {
@@ -19,12 +19,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Build stage - optional for Node.js'
+                bat 'npm run build'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying app...'
+                echo 'Deploying application...'
+                // Add deploy steps here
             }
         }
     }
